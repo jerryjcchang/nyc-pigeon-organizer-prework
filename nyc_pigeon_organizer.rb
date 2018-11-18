@@ -1,19 +1,19 @@
 def nyc_pigeon_organizer (data)
-  result = {}
+  final = {}
 
   data.each do |first_level, all_other|
     all_other.each do |category, array|
       array.each do |name|
-        result[name] = {:color => [], :gender => [], :lives => []}
+        final[name] = {:color => [], :gender => [], :lives => []}
       end 
     end 
   end 
-  x = result.keys
+  x = final.keys
   data[:color].each do |bird_color, name|
     name.each do |bird_name|
       x.each do |item|
         if bird_name === item
-          result[item][:color] << bird_color.to_s
+          final[item][:color] << bird_color.to_s
         end 
       end 
     end 
@@ -22,7 +22,7 @@ def nyc_pigeon_organizer (data)
     type.each do |bird_name|
       x.each do |item|
         if bird_name === item
-          result[item][:gender] << gender.to_s
+          final[item][:gender] << gender.to_s
         end 
       end 
     end 
@@ -31,13 +31,13 @@ def nyc_pigeon_organizer (data)
     name.each do |bird_name|
       x.each do |item|
         if bird_name === item
-          result[item][:lives] << location
+          final[item][:lives] << location
         end 
       end 
     end 
   end 
   
-  return result
+  return final 
 end 
 
 nyc_pigeon_organizer(pigeon_data)
